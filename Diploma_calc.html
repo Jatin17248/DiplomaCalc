@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PSBTE Diploma Marks Calculator</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+  .container{
+	background-color: #ffffff;
+   border-radius: 10px;
+   
+   border-top: 4px solid blue;
+   border-bottom: 4px solid blue;
+  }
+  
+  body{
+  background-image: url('bg.jpg');
+  /*background-image: url('file_64faea99605d06.43847054.jpg');*/
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  }
+  .row{
+	background-image: linear-gradient(to right, #820e05, #34568b, #820f5e);	
+	width: 100%; /* Set the width to 100% */
+	}
+	
+  #foot-creator, #foot-creator:visited, #foot-creator:hover, #foot-creator:active{
+	color: inherit;
+	}
+	
+	.yearmrks {
+    text-align:center;
+	font-weight:bold;
+  }
+  
+  .note {
+  display: inline-block;
+  border-radius: 10px;
+  border-top: 4px solid blue;
+  border-bottom: 4px solid blue;
+  overflow: hidden;
+}
+
+.animated-text {
+  background: linear-gradient(to right, #820e05, red, Blue, #34568b, #820f5e);
+  -webkit-background-clip: text;
+  
+  color: transparent;
+  font-family: 'Arial', sans-serif;
+  font-size: 24px;
+  line-height: 1.5;
+  padding: 20px;
+  animation: colorChange 5s infinite alternate;
+}
+
+	@keyframes colorChange {
+	  0% {
+		background-position: 0%;
+	  }
+	  100% {
+		background-position: 1000%;
+	  }
+}
+  </style>
+  
+</head>
+<body>
+  <div class="container">
+    <center><h2 class="mt-4"><br>PSBTE Diploma Marks Calculator</h2></center>
+    <table class="table mt-4">
+      <thead>
+        <tr>
+          <th>Semester</th>
+          <th>Marks Obtained</th>
+          <th>Maximum Marks</th>
+          <th>Marks Obtained (Calculation)</th>
+          <th>Maximum Marks (Calculation)</th>
+		  <th>Marks Obtained Yearly(Calculation)</th>
+        </tr>
+      </thead>
+      <tbody>
+	  <tr>
+          <td>1st Semester</td>
+          <td><input type="number" class="form-control" id="sem1Marks"></td>
+          <td><input type="number" class="form-control" id="sem1MaxMarks"></td>
+          <td id="sem1CalcMarks"></td>
+          <td id="sem1CalcMaxMarks"></td>
+		  <td rowspan="2" id="year1CalcMarks" class="yearmrks align-middle"> </td>
+        </tr>
+        <tr>
+          <td>2nd Semester</td>
+          <td><input type="number" class="form-control" id="sem2Marks"></td>
+          <td><input type="number" class="form-control" id="sem2MaxMarks"></td>
+          <td id="sem2CalcMarks"></td>
+          <td id="sem2CalcMaxMarks"></td>
+		   
+        </tr>
+        <tr>
+          <td>3rd Semester</td>
+          <td><input type="number" class="form-control" id="sem3Marks"></td>
+          <td><input type="number" class="form-control" id="sem3MaxMarks"></td>
+          <td id="sem3CalcMarks"></td>
+          <td id="sem3CalcMaxMarks"></td>
+		   <td rowspan="2" id="year2CalcMarks" class="yearmrks align-middle"> </td>
+        </tr>
+        <tr>
+          <td>4th Semester</td>
+          <td><input type="number" class="form-control" id="sem4Marks"></td>
+          <td><input type="number" class="form-control" id="sem4MaxMarks"></td>
+          <td id="sem4CalcMarks"></td>
+          <td id="sem4CalcMaxMarks"></td>
+		   
+        </tr>
+        <tr>
+          <td>5th Semester</td>
+          <td><input type="number" class="form-control" id="sem5Marks"></td>
+          <td><input type="number" class="form-control" id="sem5MaxMarks"></td>
+          <td id="sem5CalcMarks"></td>
+          <td id="sem5CalcMaxMarks"></td>
+		    <td rowspan="2" id="year3CalcMarks" class="yearmrks align-middle"> </td>
+        </tr>
+        <tr>
+          <td>6th Semester</td>
+          <td><input type="number" class="form-control" id="sem6Marks"></td>
+          <td><input type="number" class="form-control" id="sem6MaxMarks"></td>
+          <td id="sem6CalcMarks"></td>
+          <td id="sem6CalcMaxMarks"></td>
+		  
+        </tr>
+      </tbody>
+    </table>
+	 <label>
+    <input type="checkbox" id="firstAttempt"> Cleared all exams in first attempt
+  </label>
+  <center>
+    <button class="btn btn-primary" onclick="calculateTotal()">Calculate Total</button>
+  </center>
+   <table class="table mt-4"><tr><td> <h3 class="mt-4" id="result"></h3></td><td>&nbsp;&nbsp;&nbsp;</td><td>
+	<h3 class="mt-4" id="percentage"></h3></td></tr>
+	<tr>
+	<td colspan="4"><h3 class="mt-4" id="division"></td>
+	</tr>
+	<tr>
+	
+	</tr>
+	<tr><td colspan="4"><h4 class="mt-4">
+	Instructions for final Diploma Certificates : Weightage will be calculated as per formula
+ : 25% marks of I & II semester + 50% marks of III & IV semester + 100% marks of V & VI
+ semester. Divisions will be assigned as First division with Hons (70% & above in Ist
+ attempt);First division (60% & above ); Second division (Less than 60%)</h4></td>
+	</tr>
+	<tr><td colspan="5" class="splnote">  <center><div class="note">
+    <h2 class="animated-text">
+     Kindly ensure that you input 0 for First Two Semester Marks if you are an accomplished Leet Student.
+    </h2>
+  </div></center>
+</td></tr>
+	<tr><td colspan="4">
+	<center><h4 class="mt-4" style="text-align:center; font-family: 'Monotype Corsiva';"><i class="material-icons" style="color: brown;">COPYRIGHT</i> 2023 <b > Designed by<a href="mailto:jatinsood242@gmail.com" id="foot-creator">Jatin Sood|Call:7814430330</a></b></h4></center>
+	</td></tr>
+    </table>    
+   
+  </div>
+  
+ <script>
+    function calculateTotal() {
+      var sem1Marks = parseInt(document.getElementById('sem1Marks').value);
+      var sem1MaxMarks = parseInt(document.getElementById('sem1MaxMarks').value);
+      var sem2Marks = parseInt(document.getElementById('sem2Marks').value);
+      var sem2MaxMarks = parseInt(document.getElementById('sem2MaxMarks').value);
+      var sem3Marks = parseInt(document.getElementById('sem3Marks').value);
+      var sem3MaxMarks = parseInt(document.getElementById('sem3MaxMarks').value);
+      var sem4Marks = parseInt(document.getElementById('sem4Marks').value);
+      var sem4MaxMarks = parseInt(document.getElementById('sem4MaxMarks').value);
+      var sem5Marks = parseInt(document.getElementById('sem5Marks').value);
+      var sem5MaxMarks = parseInt(document.getElementById('sem5MaxMarks').value);
+      var sem6Marks = parseInt(document.getElementById('sem6Marks').value);
+      var sem6MaxMarks = parseInt(document.getElementById('sem6MaxMarks').value);
+      
+      var sem1CalcMarks = sem1Marks / 4;
+      var sem2CalcMarks = sem2Marks / 4;
+      var sem3CalcMarks = sem3Marks / 2;
+      var sem4CalcMarks = sem4Marks / 2;
+      var sem5CalcMarks = sem5Marks;
+      var sem6CalcMarks = sem6Marks;
+      
+      var sem1CalcMaxMarks = sem1MaxMarks / 4;
+      var sem2CalcMaxMarks = sem2MaxMarks / 4;
+      var sem3CalcMaxMarks = sem3MaxMarks / 2;
+      var sem4CalcMaxMarks = sem4MaxMarks / 2;
+      var sem5CalcMaxMarks = sem5MaxMarks;
+      var sem6CalcMaxMarks = sem6MaxMarks;
+      
+      document.getElementById('sem1CalcMarks').textContent = sem1CalcMarks;
+      document.getElementById('sem2CalcMarks').textContent = sem2CalcMarks;
+      document.getElementById('sem3CalcMarks').textContent = sem3CalcMarks;
+      document.getElementById('sem4CalcMarks').textContent = sem4CalcMarks;
+      document.getElementById('sem5CalcMarks').textContent = sem5CalcMarks;
+      document.getElementById('sem6CalcMarks').textContent = sem6CalcMarks;
+      
+      document.getElementById('sem1CalcMaxMarks').textContent = sem1CalcMaxMarks;
+      document.getElementById('sem2CalcMaxMarks').textContent = sem2CalcMaxMarks;
+      document.getElementById('sem3CalcMaxMarks').textContent = sem3CalcMaxMarks;
+      document.getElementById('sem4CalcMaxMarks').textContent = sem4CalcMaxMarks;
+      document.getElementById('sem5CalcMaxMarks').textContent = sem5CalcMaxMarks;
+      document.getElementById('sem6CalcMaxMarks').textContent = sem6CalcMaxMarks;
+      
+	  document.getElementById('year1CalcMarks').textContent = sem1CalcMarks + sem2CalcMarks;
+	  document.getElementById('year2CalcMarks').textContent = sem3CalcMarks + sem4CalcMarks;
+	  document.getElementById('year3CalcMarks').textContent = sem5CalcMarks + sem6CalcMarks;
+	  
+      var totalMarks = sem1CalcMarks + sem2CalcMarks + sem3CalcMarks + sem4CalcMarks + sem5CalcMarks + sem6CalcMarks;
+      var totalMaxMarks = sem1CalcMaxMarks + sem2CalcMaxMarks + sem3CalcMaxMarks + sem4CalcMaxMarks + sem5CalcMaxMarks + sem6CalcMaxMarks;
+      
+	  var isFirstAttempt = document.getElementById('firstAttempt').checked;
+
+  var division = "";
+  if (isFirstAttempt && totalMarks >= 0.7 * totalMaxMarks) {
+    division = "First division with Hons (70% & above in Ist attempt)";
+  } else if (totalMarks >= 0.6 * totalMaxMarks) {
+    division = "First division (60% & above)";
+  } else if (totalMarks >= 0.4 * totalMaxMarks){
+    division = "Second division (Less than 60%)";
+  }
+  else{
+	division = "Fail(Less than 40%)";
+  }
+	  
+      document.getElementById('result').textContent = "Total Marks: " + totalMarks + " / " + totalMaxMarks;
+	  document.getElementById('percentage').textContent = "Percentage: " + (totalMarks/totalMaxMarks)*100;
+	  document.getElementById('division').textContent = "Your Division is: " + division;
+    }
+  </script>
+  </body>
+  </html>
